@@ -25,10 +25,6 @@ A Docker-based stack combining PostgreSQL, PgAdmin, and a Node.js Express server
 - The PgAdmin web interface is accessible at `http://localhost:420`
 - The Node.js Express server is accessible at `http://localhost:3000/api`
 
-# License
-
-This project is open source and available under the [MIT License](LICENSE).
-
 ```
 
 ```
