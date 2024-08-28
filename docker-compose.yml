@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    container_name: postgres_cloud_app
+    env_file:
+      - .env
+    ports:
+      - "420:420"
+      - "80:80"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    depends_on:
+      - postgres
+      - pgadmin
+
+  postgres:
+    image: postgres:13-alpine
+    container_name: postgres_container
+    env_file:
+      - .env
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin_container
+    env_file:
+      - .env
+    ports:
+      - "80:80"
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
